@@ -163,7 +163,7 @@ def build_driver(user_data_dir: str):
     opts.add_argument("--disable-notifications")
     opts.add_argument("--disable-popup-blocking")
     opts.add_argument("--disable-extensions")
-    opts.add_argument("--window-size=1280,720")
+    opts.add_argument("--window-size=800,820")
 
     # ✅ anti sync / chrome sign-in prompt (lebih stabil, mengurangi prompt sync)
     opts.add_argument("--disable-sync")
@@ -206,7 +206,7 @@ def build_driver(user_data_dir: str):
     opts.add_argument("--disable-setuid-sandbox")
     opts.add_argument("--disable-popup-blocking")
     opts.add_argument("--disable-infobars")
-    opts.add_argument("--window-size=500,500")
+    opts.add_argument("--window-size=800,800")
     opts.add_argument("--disable-extensions")
     opts.add_experimental_option(
         "excludeSwitches",

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+APP_NAME="joko-terminal-data-v5"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DATA_DIR="$SCRIPT_DIR/data"
+mkdir -p "$DATA_DIR/chrome_profiles" "$DATA_DIR/screenshots" "$DATA_DIR/snapshots"
+touch "$DATA_DIR/email.txt" "$DATA_DIR/emailshare.txt" "$DATA_DIR/mapping_profil.txt" "$DATA_DIR/loop_log.txt" "$DATA_DIR/login_log.txt" "$DATA_DIR/buat_link_log.txt" "$DATA_DIR/bot_log.txt" "$DATA_DIR/hasil.txt" "$DATA_DIR/akun_bermasalah.txt" "$DATA_DIR/loop_status.json"
+[ -s "$DATA_DIR/loop_status.json" ] || echo '{}' > "$DATA_DIR/loop_status.json"
+
+docker build -t "$APP_NAME" .
+docker run --rm -it --privileged   --name "$APP_NAME"   -e BASE_DIR=/joko-app/data   -e DATA_DIR=/joko-app/data   -e PROFILES_ROOT=/joko-app/data/chrome_profiles   -v "$DATA_DIR:/joko-app/data"   "$APP_NAME" bash /joko-app/menu.sh

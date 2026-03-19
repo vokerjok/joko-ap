@@ -59,7 +59,7 @@ MAX_PARALLEL = int(os.environ.get("MAX_PARALLEL", "25"))
 # dst
 # Total link di setiap jokoX.txt akan dibagi berdasarkan jumlah clone di grup itu
 # ======================
-CLONES_PER_FILE = int(os.environ.get("CLONES_PER_FILE", "10"))
+CLONES_PER_FILE = int(os.environ.get("CLONES_PER_FILE", "5"))
 
 # Chrome profile directory di dalam user-data-dir (biasanya Default)
 PROFILE_DIR = os.environ.get("PROFILE_DIR", "Default")

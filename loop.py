@@ -38,9 +38,9 @@ STATUS_FILE = os.path.join(DATA_DIR, "loop_status.json")
 LOOP_LOG_FILE = os.path.join(DATA_DIR, "loop_log.txt")
 
 # Delay & timing
-PRE_OPEN_DELAY = int(os.environ.get("PRE_OPEN_DELAY", "2"))          # delay sebelum get(link)
-START_PROFILE_DELAY = int(os.environ.get("START_PROFILE_DELAY", "2"))
-SLEEP_SEBELUM_AKSI = int(os.environ.get("SLEEP_SEBELUM_AKSI", "2"))
+PRE_OPEN_DELAY = int(os.environ.get("PRE_OPEN_DELAY", "5"))          # delay sebelum get(link)
+START_PROFILE_DELAY = int(os.environ.get("START_PROFILE_DELAY", "5"))
+SLEEP_SEBELUM_AKSI = int(os.environ.get("SLEEP_SEBELUM_AKSI", "5"))
 SLEEP_SESUDAH_AKSI = int(os.environ.get("SLEEP_SESUDAH_AKSI", "25"))
 SLEEP_JIKA_ERROR = int(os.environ.get("SLEEP_JIKA_ERROR", "2"))
 
@@ -59,7 +59,7 @@ MAX_PARALLEL = int(os.environ.get("MAX_PARALLEL", "25"))
 # dst
 # Total link di setiap jokoX.txt akan dibagi berdasarkan jumlah clone di grup itu
 # ======================
-CLONES_PER_FILE = int(os.environ.get("CLONES_PER_FILE", "5"))
+CLONES_PER_FILE = int(os.environ.get("CLONES_PER_FILE", "10"))
 
 # Chrome profile directory di dalam user-data-dir (biasanya Default)
 PROFILE_DIR = os.environ.get("PROFILE_DIR", "Default")
@@ -77,7 +77,7 @@ WITA_TZ = ZoneInfo(AUTO_TIMEZONE)
 PAUSE_START_HOUR = 3
 PAUSE_START_MINUTE = 25
 PAUSE_END_HOUR = 6
-PAUSE_END_MINUTE = 1
+PAUSE_END_MINUTE = 5
 
 
 # ======================

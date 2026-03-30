@@ -41,15 +41,7 @@ RUN set -eux; \
     '}' \
     > /etc/opt/chrome/policies/managed/policy.json
 
-RUN set -eux; \
-    CHROME_MAJOR="$(google-chrome --version | awk '{print $3}' | cut -d '.' -f1)"; \
-    echo ">> Detected Chrome major version: ${CHROME_MAJOR}"; \
-    curl -fsSL -o /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_MAJOR}.0.0.0/linux64/chromedriver-linux64.zip"; \
-    unzip /tmp/chromedriver.zip -d /tmp/; \
-    mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver; \
-    rm -rf /tmp/chromedriver.zip /tmp/chromedriver-linux64; \
-    chmod +x /usr/local/bin/chromedriver; \
-    ln -sf /usr/local/bin/chromedriver /usr/bin/chromedriver
+RUN set -eux;     CHROME_TRIPLE="$(google-chrome --version | awk '{print $3}' | cut -d '.' -f1-3)";     echo ">> Detected Chrome build: ${CHROME_TRIPLE}";     DRIVER_VERSION="$(curl -fsSL "https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_${CHROME_TRIPLE}")";     echo ">> Resolved chromedriver version: ${DRIVER_VERSION}";     curl -fsSL -o /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${DRIVER_VERSION}/linux64/chromedriver-linux64.zip";     unzip /tmp/chromedriver.zip -d /tmp/;     mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver;     rm -rf /tmp/chromedriver.zip /tmp/chromedriver-linux64;     chmod +x /usr/local/bin/chromedriver;     ln -sf /usr/local/bin/chromedriver /usr/bin/chromedriver
 
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir \

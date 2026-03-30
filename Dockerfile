@@ -42,9 +42,9 @@ RUN set -eux; \
     > /etc/opt/chrome/policies/managed/policy.json
 
 RUN set -eux; \
-    CHROME_VER="$(google-chrome --version | awk '{print $3}')"; \
-    echo ">> Detected Chrome version: ${CHROME_VER}"; \
-    curl -fsSL -o /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_VER}/linux64/chromedriver-linux64.zip"; \
+    CHROME_MAJOR="$(google-chrome --version | awk '{print $3}' | cut -d '.' -f1)"; \
+    echo ">> Detected Chrome major version: ${CHROME_MAJOR}"; \
+    curl -fsSL -o /tmp/chromedriver.zip "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_MAJOR}.0.0.0/linux64/chromedriver-linux64.zip"; \
     unzip /tmp/chromedriver.zip -d /tmp/; \
     mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver; \
     rm -rf /tmp/chromedriver.zip /tmp/chromedriver-linux64; \
